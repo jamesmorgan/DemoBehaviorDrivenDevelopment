@@ -18,7 +18,7 @@ public class AccountBalanceAdjustmentSteps {
 	private Account account;
 
 	/**
-	 * Callback method triggered before each scenario.
+	 * Called before each scenario! Equivalent to @setUp in JUnit
 	 */
 	@BeforeScenario
 	public void setUp() {
