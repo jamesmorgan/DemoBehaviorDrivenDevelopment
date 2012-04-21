@@ -16,7 +16,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<property name="formats">
 			<list>
 				<!-- Format could be CONSOLE, IDE_CONSOLE, TXT, HTML, XML -->
-				<value>IDE_CONSOLE</value>
+				<value>HTML</value>
 			</list>
 		</property>
 	</bean>

@@ -9,11 +9,20 @@ public class Account {
 	private boolean inDebt;
 
 	public void reduceBalance(BigDecimal amount) {
-		this.openingBalance.subtract(amount);
+		this.openingBalance = this.openingBalance.subtract(amount);
+		if (-1 == this.openingBalance.compareTo(BigDecimal.ZERO)) {
+			this.totalDebt = this.openingBalance;
+			this.totalDebt = this.totalDebt.abs();
+			this.inDebt = true;
+		}
 	}
 
 	public void increaseBalance(BigDecimal amount) {
-		this.openingBalance.add(amount);
+		this.openingBalance = this.openingBalance.add(amount);
+		if (0 == this.openingBalance.compareTo(BigDecimal.ZERO) || 1 == this.openingBalance.compareTo(BigDecimal.ZERO)) {
+			this.totalDebt = BigDecimal.ZERO;
+			this.inDebt = false;
+		}
 	}
 
 	public BigDecimal getOpeningBalance() {

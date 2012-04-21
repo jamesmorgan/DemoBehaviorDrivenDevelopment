@@ -9,14 +9,15 @@ Given the account balance is 100
     and the account is not in debt
 When the accountant reduces the balance by 120
 Then the account balance should be -20
-	and the account should be in debt
-	and the total debt should be in debt 20
+    and the account should be in debt
+    and the total debt should be in debt 20
 
 
 Scenario: Account Has Been Cleared
 Given the account balance is -20
-	and the account is in debt
-When the account gets debited 20
+    and the account is in debt
+    and the account total debt is 20
+When the account gets debited by 20
 Then the account balance should be 0
-	and the account should not be in debt
-	and the total debt should be in debt 0
+    and the account should not be in debt
+    and the total debt should be in debt 0

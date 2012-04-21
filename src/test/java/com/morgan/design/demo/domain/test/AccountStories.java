@@ -15,14 +15,19 @@ import org.junit.runner.RunWith;
 
 @RunWith(SpringAnnotatedEmbedderRunner.class)
 @Configure
-@UsingEmbedder(embedder = Embedder.class, generateViewAfterStories = true, stepsFactory = true)
+@UsingEmbedder(embedder = Embedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = false, stepsFactory = true)
 @UsingSpring(resources = "classpath:spring/test-config.xml")
 @UsingSteps
 public class AccountStories extends JUnitStories {
 
 	@Override
 	protected List<String> storyPaths() {
-		return new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("/stories"), "stories/*.story", "");
+		List<String> findPaths = new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("src/test/resources"),
+				"com/morgan/design/demo/stories/*.story", "");
+		for (String story : findPaths) {
+			System.out.println("Found Story: " + story);
+		}
+		return findPaths;
 	}
 
 }
